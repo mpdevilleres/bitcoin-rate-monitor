@@ -16,11 +16,15 @@ class Provider(models.Model):
 
     @property
     def latest_rate(self):
-        return self.rate_set.last().rate
+        if self.rate_set.last():
+            return self.rate_set.last().rate
+        return 0.0
 
     @property
     def latest_rate_updated_on(self):
-        return self.rate_set.last().updated_on
+        if self.rate_set.last():
+            return self.rate_set.last().updated_on
+        return 0.0
 
     def get_latest_rate(self):
         respond = requests.get(self.api).text

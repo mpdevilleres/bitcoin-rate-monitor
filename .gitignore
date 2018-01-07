@@ -309,3 +309,5 @@ bitcoin_rate_monitor/media/
 # See issue https://github.com/pydanny/cookiecutter-django/issues/1321
 !/compose/local/
 
+# database
+*.db
