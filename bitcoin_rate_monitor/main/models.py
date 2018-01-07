@@ -38,6 +38,11 @@ class Provider(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        super(Provider, self).save()
+        self.do_update_rate()
+
 
 class Rate(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
