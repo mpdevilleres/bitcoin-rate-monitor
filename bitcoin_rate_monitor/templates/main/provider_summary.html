@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block title %}Providers{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>Providers</h2>
+  <h3>Average Rate: {{ data.average_rate|floatformat:2 }}</h3>
+
+  {% for provider in data.providers %}
+  <div class="row">
+    <h4>{{ provider.name }} - {{provider.latest_rate}} - {{provider.latest_update}}</h4>
+  </div>
+  {% for difference in provider.differences %}
+  <div class="row">
+    DELTA TO {{ difference.name }}: {{ difference.rate }}
+  </div>
+  {% endfor %}
+  {% endfor %}
+
+
+</div>
+{% endblock content %}

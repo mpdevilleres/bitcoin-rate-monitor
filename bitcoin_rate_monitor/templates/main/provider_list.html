@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block title %}Members{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>Providers</h2>
+
+  <div class="list-group">
+    {% for provider in provider_list %}
+      <a href="{% url 'provider:detail' provider.name %}" class="list-group-item">
+        <h5 class="list-group-item-heading">
+          {{ provider.name }}:
+          <span class="pull-right">{{ provider.latest_rate }} USD</span>
+        </h5>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
